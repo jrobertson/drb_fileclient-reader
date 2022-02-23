@@ -18,7 +18,8 @@ class DRbFileClientReader
       host = location[/(?<=^dfs:\/\/)[^\/:]+/]
       port = location[/(?<=^dfs:\/\/)[^:]+:(\d+)/,1]  || '61010'
       @@directory = location[/(?<=^dfs:\/\/)[^\/]+\/(.*)/,1]
-
+    else
+      @@directory = nil
     end
 
     DRb.start_service
