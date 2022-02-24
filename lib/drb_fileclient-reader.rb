@@ -17,9 +17,9 @@ class DRbFileClientReader
 
       host = location[/(?<=^dfs:\/\/)[^\/:]+/]
       port = location[/(?<=^dfs:\/\/)[^:]+:(\d+)/,1]  || '61010'
-      @@directory = location[/(?<=^dfs:\/\/)[^\/]+\/(.*)/,1]
+      @@directory ||= location[/(?<=^dfs:\/\/)[^\/]+\/(.*)/,1]
     else
-      @@directory = nil
+      @@directory ||= nil
     end
 
     DRb.start_service
@@ -45,7 +45,7 @@ class DRbFileClientReader
 
   def read(filename=@@filename)
 
-    return File.read filename, s unless @@directory or filename =~ /^dfs:\/\//
+    return File.read(filename) unless @@directory or filename =~ /^dfs:\/\//
 
     if filename =~ /^dfs:\/\// then
       @@file, path = parse_path(filename)
