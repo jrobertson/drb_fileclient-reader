@@ -12,6 +12,7 @@ class DRbFileClientReader
   def initialize(location=nil, host: nil, port: '61010', debug: false)
 
     @debug = debug
+    @@file ||= nil
 
     if location then
 

@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'drb_fileclient-reader'
-  s.version = '0.1.3'
+  s.version = '0.1.4'
   s.summary = 'A DRb file reader client to access the DRb_fileserver service.'
   s.authors = ['James Robertson']
   s.files = Dir['lib/drb_fileclient-reader.rb']
