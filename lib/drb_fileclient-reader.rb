@@ -32,7 +32,10 @@ class DRbFileClientReader
     return File.exists? filename unless @@directory or filename =~ /^dfs:\/\//
 
     if filename =~ /^dfs:\/\// then
-      @@file, filename2 = parse_path(filename)
+
+      file, filename2 = parse_path(filename)
+      @@file ||= file
+
     else
 
       filename2 = File.join(@@directory, filename)
@@ -49,7 +52,8 @@ class DRbFileClientReader
     return File.read(filename) unless @@directory or filename =~ /^dfs:\/\//
 
     if filename =~ /^dfs:\/\// then
-      @@file, path = parse_path(filename)
+      file, path = parse_path(filename)
+      @@file ||= file
     else
       path = File.join(@@directory, filename)
     end
