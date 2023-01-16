@@ -27,9 +27,9 @@ class DRbFileClientReader
 
   end
 
-  def exists?(filename=@@filename)
+  def exist?(filename=@@filename)
 
-    return File.exists? filename unless @@directory or filename =~ /^dfs:\/\//
+    return File.exist? filename unless @@directory or filename =~ /^dfs:\/\//
 
     if filename =~ /^dfs:\/\// then
 
@@ -41,7 +41,7 @@ class DRbFileClientReader
       filename2 = File.join(@@directory, filename)
     end
 
-    @@file.exists?(filename2)
+    @@file.exist?(filename2)
 
   end
 
@@ -81,7 +81,8 @@ class DfsFile
 
   @client = DRbFileClientReader.new
 
-  def self.exists?(filename)    @client.exists?(filename)    end
+  def self.exist?(filename)    @client.exist?(filename)    end  
+  def self.exists?(filename)    @client.exist?(filename)    end
   def self.read(filename)       @client.read(filename)       end
 
 end
