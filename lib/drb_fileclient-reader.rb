@@ -2,7 +2,7 @@
 
 # file: drb_fileclient-reader.rb
 
-require 'drb'
+require 'drb/drb'
 require 'c32'
 
 
@@ -44,8 +44,6 @@ class DRbFileClientReader
     @@file.exist?(filename2)
 
   end
-
-  alias exist? exists?
 
   def read(filename=@@filename)
 
